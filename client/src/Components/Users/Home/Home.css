@@ -1,0 +1,23 @@
+.home-container 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.buttons .btn-1
+{
+    background: linear-gradient(to right,
+        #020024,
+        #d2008f,
+        #d9ff00);
+        color: white;
+        width: 200px;
+        border: none;
+        margin: 20px;
+}
+.home-container img {
+    border-radius: 50%;
+}
