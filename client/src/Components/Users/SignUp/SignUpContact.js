@@ -3,12 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import "./SignUpContact.css";
 import "./SlideTransition.css";
-import { css } from "@emotion/react";
-import { PropagateLoader } from "react-spinners";
 import MultiStepProgressBar from "./MultiStepProgressBar";
 import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../../Loader/Loading.js";
 const SignUpContact = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,10 +17,6 @@ const SignUpContact = () => {
   const [avatar, setAvatar] = useState(false);
   const [showImageInput, setImageInput] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  const override = css`
-    margin-bottom: 5px;
-  `;
   if (!isEmail) {
     <p>You can't access this page directly</p>;
     return;
@@ -122,16 +117,7 @@ const SignUpContact = () => {
               <NavLink to={"/signin"}>already have an account?</NavLink>
             </div>
             <button type="submit" className="form-control my-2 text-white">
-              {loading ? (
-                <PropagateLoader
-                  css={override}
-                  color={"white"}
-                  size={10}
-                  loading={loading}
-                />
-              ) : (
-                "Next"
-              )}
+              {loading ? <Loading /> : "Next"}
             </button>
           </Form>
         </div>

@@ -3,16 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import "./SignUpEmail.css";
 import "./SlideTransition.css";
-import { css } from "@emotion/react";
-import { PropagateLoader } from "react-spinners";
 import MultiStepProgressBar from "./MultiStepProgressBar";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../../Loader/Loading.js";
 const SignUpEmail = () => {
-  const override = css`
-    margin-bottom: 5px;
-  `;
   const [loading, setLoading] = useState(false);
   const index = 1;
   const navigate = useNavigate();
@@ -108,16 +104,7 @@ const SignUpEmail = () => {
               className="form-control my-2 custom-button"
               style={{ height: "40px" }}
             >
-              {loading ? (
-                <PropagateLoader
-                  css={override}
-                  color={"white"}
-                  size={10}
-                  loading={loading}
-                />
-              ) : (
-                "Next"
-              )}
+              {loading ? <Loading /> : "Next"}
             </button>
           </Form>
         </div>

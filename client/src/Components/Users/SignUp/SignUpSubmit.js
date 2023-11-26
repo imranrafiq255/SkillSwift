@@ -2,21 +2,17 @@ import { React, useState } from "react"; // Import useState
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import "./SignUpSubmit.css";
-import { css } from "@emotion/react";
-import { PropagateLoader } from "react-spinners";
 import MultiStepProgressBar from "./MultiStepProgressBar";
 import { NavLink, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../../Loader/Loading.js";
 const SignUpContact = () => {
   const location = useLocation();
   const index = location.state && location.state.index;
   const id = location.state && location.state.id;
   const isEmail = location.state && location.state.isEmail;
   const [loading, setLoading] = useState(false);
-  const override = css`
-    margin-bottom: 5px;
-  `;
   if (!isEmail) {
     return <p>You can't access this page directly</p>;
   }
@@ -83,16 +79,7 @@ const SignUpContact = () => {
               <NavLink to={"/signin"}>already have an account?</NavLink>
             </div>
             <button type="submit" className="form-control my-2">
-              {loading ? (
-                <PropagateLoader
-                  css={override}
-                  color={"white"}
-                  size={10}
-                  loading={loading}
-                />
-              ) : (
-                "Next"
-              )}
+              {loading ? <Loading /> : "Next"}
             </button>
           </Form>
         </div>
